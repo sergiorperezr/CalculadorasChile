@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO primario -->
+  <title>Calculadoras Financieras Chile 2026 — Sueldo Líquido, Hipotecario, APV, Finiquito</title>
+  <meta name="description" content="Calculadoras financieras gratuitas para Chile: sueldo líquido con AFP y Fonasa, dividendo hipotecario en UF, interés compuesto, finiquito según el Código del Trabajo y calculadora APV régimen A o B. Datos UF y dólar en tiempo real.">
+  <meta name="keywords" content="calculadora sueldo líquido chile, simulador dividendo hipotecario uf, calculadora finiquito chile, calculadora AFP, calculadora interés compuesto chile">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://calculadoraschile.cl/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Calculadoras Financieras Chile 2026">
+  <meta property="og:description" content="Sueldo líquido, hipotecario en UF, finiquito e interés compuesto — con UF y dólar del día.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+
+  <!-- Schema markup WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CalculadorasChile",
+    "url": "https://calculadoraschile.cl",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Portal de calculadoras financieras para Chile: sueldo líquido, dividendo hipotecario, interés compuesto y finiquito.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CLP" }
+  }
+  </script>
+
+  <!-- Fuente -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ── BARRA SUPERIOR: indicadores en tiempo real ── -->
+  <div id="barra-superior" role="banner" aria-label="Indicadores económicos del día">
+    <div id="barra-indicadores">
+      <span class="cargando">Cargando indicadores…</span>
+    </div>
+  </div>
+
+  <!-- ── NAVEGACIÓN STICKY ── -->
+  <nav id="nav-principal" aria-label="Navegación de calculadoras">
+    <div class="nav-inner">
+      <a href="#inicio" class="nav-logo">CalculadorasChile</a>
+      <a href="#sueldo-liquido">Sueldo Líquido</a>
+      <a href="#hipotecario">Hipotecario</a>
+      <a href="#interes">Interés</a>
+      <a href="#finiquito">Finiquito</a>
+      <a href="#apv">APV</a>
+      <a href="#pension-alimentos">Pensión</a>
+      <a href="#arriendo-ipc">Arriendo</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header class="hero" id="inicio">
+    <h1>Calculadoras Financieras Chile</h1>
+    <p>Herramientas gratuitas con datos del Banco Central en tiempo real. Sin registro, sin publicidad intrusiva.</p>
+    <div class="hero-chips">
+      <a href="#sueldo-liquido" class="hero-chip">💼 Sueldo Líquido</a>
+      <a href="#hipotecario" class="hero-chip">🏠 Dividendo Hipotecario</a>
+      <a href="#interes" class="hero-chip">📈 Interés Compuesto</a>
+      <a href="#finiquito" class="hero-chip">📋 Finiquito</a>
+      <a href="#apv" class="hero-chip">🏦 APV</a>
+      <a href="#pension-alimentos" class="hero-chip">👶 Pensión Alimentaria</a>
+      <a href="#arriendo-ipc" class="hero-chip">🏘️ Arriendo IPC</a>
+    </div>
+  </header>
+
+  <!-- ── CALCULADORAS ── -->
+  <main class="contenedor">
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 1: SUELDO LÍQUIDO
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="sueldo-liquido" aria-labelledby="titulo-sueldo">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">💼</span>
+        <div>
+          <h2 id="titulo-sueldo">Calculadora Sueldo Líquido Chile</h2>
+          <p>AFP, salud, seguro cesantía y retención de honorarios</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+        <form id="form-sueldo" novalidate>
+          <div class="form-grid">
+
+            <div class="campo full-width">
+              <label for="bruto-sueldo">Sueldo o monto bruto ($)</label>
+              <input type="text" id="bruto-sueldo" placeholder="Ej: 1.200.000"
+                inputmode="numeric" autocomplete="off" required>
+            </div>
+
+            <div class="campo">
+              <label for="tipo-contrato">Tipo de contrato</label>
+              <select id="tipo-contrato">
+                <option value="dependiente">Dependiente (contrato)</option>
+                <option value="honorarios">Honorarios (boleta)</option>
+              </select>
+            </div>
+
+            <div class="campo" id="grupo-duracion">
+              <label for="duracion-contrato">Tipo de contrato</label>
+              <select id="duracion-contrato">
+                <option value="indefinido">Indefinido</option>
+                <option value="plazo_fijo">Plazo fijo</option>
+              </select>
+            </div>
+
+            <div class="campo" id="grupo-salud">
+              <label for="tipo-salud">Previsión de salud</label>
+              <select id="tipo-salud">
+                <option value="fonasa">Fonasa (7%)</option>
+                <option value="isapre">Isapre (% personalizado)</option>
+              </select>
+            </div>
+
+            <div class="campo" id="grupo-isapre" style="display:none">
+              <label for="porc-isapre">% Isapre</label>
+              <input type="number" id="porc-isapre" value="7" min="4" max="12" step="0.1">
+              <span class="hint-label">Mínimo legal 7%. Consulta tu liquidación.</span>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn-calcular">Calcular sueldo líquido</button>
+        </form>
+
+        <div id="resultado-sueldo" class="resultado-area" role="region" aria-live="polite"></div>
+        <div class="chart-wrapper" id="wrapper-sueldo" style="display:none">
+          <p class="chart-titulo">Distribución de tu sueldo bruto</p>
+          <canvas id="chart-sueldo"></canvas>
+        </div>
+        <button class="btn-copiar" data-target="resultado-sueldo" aria-label="Copiar resultado al portapapeles">
+          📋 Copiar resultado
+        </button>
+        <button class="btn-pdf" data-target="resultado-sueldo" data-titulo="Sueldo Líquido — CalculadorasChile" style="display:none">
+          🖨️ Descargar PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 2: DIVIDENDO HIPOTECARIO
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="hipotecario" aria-labelledby="titulo-hipotecario">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">🏠</span>
+        <div>
+          <h2 id="titulo-hipotecario">Simulador Dividendo Hipotecario en UF</h2>
+          <p>Cuota mensual, total intereses y desglose de seguros</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+        <form id="form-hipotecario" novalidate>
+          <div class="form-grid">
+
+            <div class="campo full-width">
+              <div class="fila-toggle">
+                <label for="valor-propiedad">Valor de la propiedad (<span id="label-unidad-hipotecario">UF</span>)</label>
+                <button type="button" id="toggle-unidad" class="btn-secundario">Cambiar a pesos CLP</button>
+              </div>
+              <input type="text" id="valor-propiedad" placeholder="Ej: 3.000"
+                inputmode="numeric" autocomplete="off" required>
+              <span class="hint-label">UF actual: <span id="uf-dia-ref">cargando…</span></span>
+            </div>
+
+            <div class="campo">
+              <label for="pie-porc">Pie (%)</label>
+              <input type="number" id="pie-porc" value="20" min="0" max="100" step="1">
+            </div>
+
+            <div class="campo">
+              <label for="tasa-hipotecario">Tasa interés anual en UF (%)</label>
+              <input type="number" id="tasa-hipotecario" value="4.0" min="0.1" max="20" step="0.1">
+            </div>
+
+            <div class="campo">
+              <label for="plazo-hipotecario">Plazo</label>
+              <select id="plazo-hipotecario">
+                <option value="10">10 años</option>
+                <option value="15">15 años</option>
+                <option value="20" selected>20 años</option>
+                <option value="25">25 años</option>
+                <option value="30">30 años</option>
+              </select>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn-calcular">Simular dividendo</button>
+        </form>
+
+        <div id="resultado-hipotecario" class="resultado-area" role="region" aria-live="polite"></div>
+        <button class="btn-copiar" data-target="resultado-hipotecario" aria-label="Copiar resultado al portapapeles">
+          📋 Copiar resultado
+        </button>
+        <button class="btn-pdf" data-target="resultado-hipotecario" data-titulo="Dividendo Hipotecario — CalculadorasChile" style="display:none">
+          🖨️ Descargar PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 3: INVERSIÓN E INFLACIÓN
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="interes" aria-labelledby="titulo-interes">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">📈</span>
+        <div>
+          <h2 id="titulo-interes">Calculadoras de Inversión e Inflación</h2>
+          <p>Compuesto · Simple · Inflación · Comparador · Simulación mensual</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+
+        <!-- Tabs -->
+        <div class="tabs-nav" role="tablist">
+          <button class="tab-btn activo" data-tab="compuesto" role="tab">📊 Compuesto</button>
+          <button class="tab-btn" data-tab="simple" role="tab">📐 Simple</button>
+          <button class="tab-btn" data-tab="inflacion" role="tab">🔥 Inflación</button>
+          <button class="tab-btn" data-tab="comparador" role="tab">⚖️ Comparador</button>
+          <button class="tab-btn" data-tab="mensual" role="tab">📅 Mensual</button>
+        </div>
+
+        <!-- ── TAB: INTERÉS COMPUESTO ── -->
+        <div class="tab-panel activo" id="tab-compuesto" role="tabpanel">
+          <form id="form-compuesto" novalidate>
+            <div class="form-grid">
+              <div class="campo">
+                <label for="capital-compuesto">Capital inicial ($)</label>
+                <input type="text" id="capital-compuesto" placeholder="Ej: 5.000.000" inputmode="numeric" autocomplete="off" required>
+              </div>
+              <div class="campo">
+                <label for="aporte-compuesto">Aporte mensual ($, opcional)</label>
+                <input type="text" id="aporte-compuesto" placeholder="Ej: 100.000" inputmode="numeric" autocomplete="off">
+              </div>
+              <div class="campo">
+                <label for="tasa-compuesto">Tasa anual (%)</label>
+                <input type="number" id="tasa-compuesto" value="8" min="0.01" max="100" step="0.1">
+                <span class="hint-label">Tasa nominal anual, capitalización mensual</span>
+              </div>
+              <div class="campo">
+                <label>Período</label>
+                <div style="display:flex;gap:0.5rem">
+                  <input type="number" id="plazo-compuesto" value="10" min="1" style="flex:1">
+                  <select id="unidad-compuesto" style="width:100px">
+                    <option value="anos">Años</option>
+                    <option value="meses">Meses</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-calcular">Calcular proyección</button>
+          </form>
+          <div id="resultado-compuesto" class="resultado-area" role="region" aria-live="polite"></div>
+          <div class="chart-wrapper" id="wrapper-compuesto" style="display:none">
+            <p class="chart-titulo">Crecimiento de la inversión</p>
+            <canvas id="chart-compuesto"></canvas>
+          </div>
+          <button class="btn-copiar" data-target="resultado-compuesto">📋 Copiar resultado</button>
+          <button class="btn-pdf" data-target="resultado-compuesto" data-titulo="Interés Compuesto — CalculadorasChile" style="display:none">🖨️ Descargar PDF</button>
+        </div>
+
+        <!-- ── TAB: INTERÉS SIMPLE ── -->
+        <div class="tab-panel" id="tab-simple" role="tabpanel">
+          <form id="form-simple" novalidate>
+            <div class="form-grid">
+              <div class="campo">
+                <label for="capital-simple">Capital ($)</label>
+                <input type="text" id="capital-simple" placeholder="Ej: 5.000.000" inputmode="numeric" autocomplete="off" required>
+              </div>
+              <div class="campo">
+                <label for="tasa-simple">Tasa anual (%)</label>
+                <input type="number" id="tasa-simple" value="8" min="0.01" max="100" step="0.1">
+              </div>
+              <div class="campo full-width">
+                <label>Período</label>
+                <div style="display:flex;gap:0.5rem">
+                  <input type="number" id="plazo-simple" value="5" min="1" style="flex:1">
+                  <select id="unidad-simple" style="width:100px">
+                    <option value="anos">Años</option>
+                    <option value="meses">Meses</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-calcular">Calcular interés simple</button>
+          </form>
+          <div id="resultado-simple" class="resultado-area" role="region" aria-live="polite"></div>
+          <button class="btn-copiar" data-target="resultado-simple">📋 Copiar resultado</button>
+          <button class="btn-pdf" data-target="resultado-simple" data-titulo="Interés Simple — CalculadorasChile" style="display:none">🖨️ Descargar PDF</button>
+        </div>
+
+        <!-- ── TAB: INFLACIÓN ── -->
+        <div class="tab-panel" id="tab-inflacion" role="tabpanel">
+          <form id="form-inflacion" novalidate>
+            <div class="form-grid">
+              <div class="campo">
+                <label for="nominal-inflacion">Valor o ahorro actual ($)</label>
+                <input type="text" id="nominal-inflacion" placeholder="Ej: 10.000.000" inputmode="numeric" autocomplete="off" required>
+              </div>
+              <div class="campo">
+                <label for="anos-inflacion">Años a proyectar</label>
+                <input type="number" id="anos-inflacion" value="10" min="1" max="50" step="1">
+              </div>
+              <div class="campo full-width">
+                <label for="tasa-inflacion">Tasa de inflación anual (%)</label>
+                <input type="number" id="tasa-inflacion" value="4" min="0.1" max="200" step="0.1">
+                <div class="presets-fila" id="presets-inflacion">
+                  <button type="button" class="preset-btn" data-valor="2">Baja (2%)</button>
+                  <button type="button" class="preset-btn activo" data-valor="4">Moderada (4%)</button>
+                  <button type="button" class="preset-btn" data-valor="5.7">IPC Chile 2024</button>
+                  <button type="button" class="preset-btn" data-valor="8">Alta (8%)</button>
+                  <button type="button" class="preset-btn" data-valor="15">Muy alta (15%)</button>
+                  <button type="button" class="preset-btn" data-valor="50">Hiperinflación</button>
+                </div>
+              </div>
+              <div class="campo full-width">
+                <label>¿Tu inversión al <strong id="label-tasa-inv">8%</strong> vence la inflación?</label>
+                <input type="range" class="slider-tasa" id="slider-inversion" min="0" max="30" step="0.5" value="8">
+                <div style="display:flex;justify-content:space-between;font-size:0.73rem;color:var(--gris-claro)">
+                  <span>0%</span><span>15%</span><span>30%</span>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-calcular">Analizar inflación</button>
+          </form>
+          <div id="resultado-inflacion" class="resultado-area" role="region" aria-live="polite"></div>
+          <div id="resultado-vence" style="display:none"></div>
+          <button class="btn-copiar" data-target="resultado-inflacion">📋 Copiar resultado</button>
+          <button class="btn-pdf" data-target="resultado-inflacion" data-titulo="Análisis de Inflación — CalculadorasChile" style="display:none">🖨️ Descargar PDF</button>
+        </div>
+
+        <!-- ── TAB: COMPARADOR DE ESCENARIOS ── -->
+        <div class="tab-panel" id="tab-comparador" role="tabpanel">
+          <div class="escenarios-grid">
+
+            <div class="escenario-card esc-a">
+              <div class="escenario-header">
+                <div class="esc-dot"></div>
+                <span class="esc-titulo">Escenario A</span>
+              </div>
+              <div class="form-grid">
+                <div class="campo"><label>Capital ($)</label><input type="text" class="esc-capital" data-idx="0" placeholder="10.000.000" inputmode="numeric"></div>
+                <div class="campo"><label>Tasa anual (%)</label><input type="number" class="esc-tasa" data-idx="0" value="6" step="0.1" min="0.01"></div>
+                <div class="campo"><label>Años</label><input type="number" class="esc-anos" data-idx="0" value="10" min="1"></div>
+                <div class="campo"><label>Aporte/mes ($)</label><input type="text" class="esc-aporte" data-idx="0" placeholder="200.000" inputmode="numeric"></div>
+              </div>
+            </div>
+
+            <div class="escenario-card esc-b">
+              <div class="escenario-header">
+                <div class="esc-dot"></div>
+                <span class="esc-titulo">Escenario B</span>
+              </div>
+              <div class="form-grid">
+                <div class="campo"><label>Capital ($)</label><input type="text" class="esc-capital" data-idx="1" placeholder="10.000.000" inputmode="numeric"></div>
+                <div class="campo"><label>Tasa anual (%)</label><input type="number" class="esc-tasa" data-idx="1" value="10" step="0.1" min="0.01"></div>
+                <div class="campo"><label>Años</label><input type="number" class="esc-anos" data-idx="1" value="10" min="1"></div>
+                <div class="campo"><label>Aporte/mes ($)</label><input type="text" class="esc-aporte" data-idx="1" placeholder="200.000" inputmode="numeric"></div>
+              </div>
+            </div>
+
+            <div class="escenario-card esc-c">
+              <div class="escenario-header">
+                <div class="esc-dot"></div>
+                <span class="esc-titulo">Escenario C</span>
+              </div>
+              <div class="form-grid">
+                <div class="campo"><label>Capital ($)</label><input type="text" class="esc-capital" data-idx="2" placeholder="5.000.000" inputmode="numeric"></div>
+                <div class="campo"><label>Tasa anual (%)</label><input type="number" class="esc-tasa" data-idx="2" value="12" step="0.1" min="0.01"></div>
+                <div class="campo"><label>Años</label><input type="number" class="esc-anos" data-idx="2" value="10" min="1"></div>
+                <div class="campo"><label>Aporte/mes ($)</label><input type="text" class="esc-aporte" data-idx="2" placeholder="500.000" inputmode="numeric"></div>
+              </div>
+            </div>
+
+          </div>
+          <button type="button" id="btn-comparar" class="btn-calcular">Comparar escenarios</button>
+          <div id="resultado-comparador" class="resultado-area" role="region" aria-live="polite"></div>
+          <div class="chart-wrapper" id="wrapper-comparador" style="display:none">
+            <p class="chart-titulo">Comparación de crecimiento</p>
+            <canvas id="chart-comparador"></canvas>
+          </div>
+        </div>
+
+        <!-- ── TAB: SIMULACIÓN MENSUAL ── -->
+        <div class="tab-panel" id="tab-mensual" role="tabpanel">
+          <form id="form-mensual" novalidate>
+            <div class="form-grid">
+              <div class="campo">
+                <label for="aporte-mensual-sim">Aporte mensual ($)</label>
+                <input type="text" id="aporte-mensual-sim" placeholder="Ej: 300.000" inputmode="numeric" autocomplete="off" required>
+              </div>
+              <div class="campo">
+                <label for="tasa-mensual-sim">Tasa anual (%)</label>
+                <input type="number" id="tasa-mensual-sim" value="8" min="0.01" max="100" step="0.1">
+              </div>
+              <div class="campo full-width">
+                <label for="meses-mensual-sim">Período (meses) — <span id="hint-anos-mensual">10.0 años</span></label>
+                <input type="number" id="meses-mensual-sim" value="120" min="1" max="600" step="1">
+                <div class="presets-fila" id="presets-mensual">
+                  <button type="button" class="preset-btn" data-meses="12">1 año</button>
+                  <button type="button" class="preset-btn" data-meses="36">3 años</button>
+                  <button type="button" class="preset-btn" data-meses="60">5 años</button>
+                  <button type="button" class="preset-btn activo" data-meses="120">10 años</button>
+                  <button type="button" class="preset-btn" data-meses="240">20 años</button>
+                  <button type="button" class="preset-btn" data-meses="360">30 años</button>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn-calcular">Simular aportes mensuales</button>
+          </form>
+          <div id="resultado-mensual" class="resultado-area" role="region" aria-live="polite"></div>
+          <div class="chart-wrapper" id="wrapper-mensual" style="display:none">
+            <p class="chart-titulo">Crecimiento de aportes mensuales</p>
+            <canvas id="chart-mensual"></canvas>
+          </div>
+          <button class="btn-copiar" data-target="resultado-mensual">📋 Copiar resultado</button>
+          <button class="btn-pdf" data-target="resultado-mensual" data-titulo="Simulación Mensual — CalculadorasChile" style="display:none">🖨️ Descargar PDF</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 4: FINIQUITO
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="finiquito" aria-labelledby="titulo-finiquito">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">📋</span>
+        <div>
+          <h2 id="titulo-finiquito">Calculadora de Finiquito Chile</h2>
+          <p>Indemnización, vacaciones proporcionales y mes de aviso según el Código del Trabajo</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+        <form id="form-finiquito" novalidate>
+          <div class="form-grid">
+
+            <div class="campo">
+              <label for="sueldo-finiquito">Sueldo bruto mensual ($)</label>
+              <input type="text" id="sueldo-finiquito" placeholder="Ej: 800.000"
+                inputmode="numeric" autocomplete="off" required>
+            </div>
+
+            <div class="campo">
+              <label for="anos-servicio">Años de servicio</label>
+              <input type="number" id="anos-servicio" placeholder="Ej: 3.5" min="0.1" step="0.1">
+            </div>
+
+            <div class="campo">
+              <label for="tipo-contrato-finiquito">Tipo de contrato</label>
+              <select id="tipo-contrato-finiquito">
+                <option value="indefinido">Indefinido</option>
+                <option value="plazo_fijo">Plazo fijo</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="motivo-termino">Motivo del término</label>
+              <select id="motivo-termino">
+                <option value="renuncia">Renuncia voluntaria</option>
+                <option value="mutuo_acuerdo">Mutuo acuerdo</option>
+                <option value="despido_con_causa">Despido con causa (art. 160)</option>
+                <option value="necesidades_empresa">Necesidades de la empresa (art. 161)</option>
+                <option value="despido_sin_causa">Despido sin causa</option>
+              </select>
+            </div>
+
+            <div class="campo full-width">
+              <label for="dias-vacaciones">Días de vacaciones pendientes totales</label>
+              <input type="number" id="dias-vacaciones" value="0" min="0" step="0.5">
+              <span class="hint-label">0 = calcular automáticamente los proporcionales del año en curso. Si tienes días de años anteriores no tomados, súmalos aquí.</span>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn-calcular">Calcular finiquito</button>
+        </form>
+
+        <div id="resultado-finiquito" class="resultado-area" role="region" aria-live="polite"></div>
+        <button class="btn-copiar" data-target="resultado-finiquito" aria-label="Copiar resultado al portapapeles">
+          📋 Copiar resultado
+        </button>
+        <button class="btn-pdf" data-target="resultado-finiquito" data-titulo="Finiquito — CalculadorasChile" style="display:none">
+          🖨️ Descargar PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 5: APV
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="apv" aria-labelledby="titulo-apv">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">🏦</span>
+        <div>
+          <h2 id="titulo-apv">Calculadora APV Chile 2026 — ¿Régimen A o B?</h2>
+          <p>Ahorro Previsional Voluntario con beneficio tributario del Estado</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+        <form id="form-apv" novalidate>
+          <div class="form-grid">
+
+            <div class="campo">
+              <label for="sueldo-apv">Sueldo bruto mensual ($)</label>
+              <input type="text" id="sueldo-apv" placeholder="Ej: 1.500.000"
+                inputmode="numeric" autocomplete="off" required>
+            </div>
+
+            <div class="campo">
+              <label for="apv-mensual">Monto APV mensual que quieres ahorrar ($)</label>
+              <input type="text" id="apv-mensual" placeholder="Ej: 150.000"
+                inputmode="numeric" autocomplete="off" required>
+              <span class="hint-label" id="hint-apv-optimo"></span>
+            </div>
+
+            <div class="campo">
+              <label for="anos-jubilacion">Años hasta jubilación</label>
+              <input type="number" id="anos-jubilacion" value="20" min="1" max="50" step="1">
+            </div>
+
+            <div class="campo">
+              <label for="rentabilidad-apv">Rentabilidad anual estimada del fondo (%)</label>
+              <input type="number" id="rentabilidad-apv" value="5" min="0" max="30" step="0.5">
+              <span class="hint-label">Fondos chilenos histórico: 4–7% anual en UF</span>
+            </div>
+
+            <div class="campo full-width">
+              <label>Régimen APV a calcular</label>
+              <div class="segmented-control">
+                <input type="radio" name="regimen-apv" id="reg-comp" value="comparar" checked>
+                <label for="reg-comp">⚖️ Comparar ambos<span class="seg-sub">Recomendado</span></label>
+                <input type="radio" name="regimen-apv" id="reg-a" value="A">
+                <label for="reg-a">Régimen A<span class="seg-sub">Bono estatal 15%</span></label>
+                <input type="radio" name="regimen-apv" id="reg-b" value="B">
+                <label for="reg-b">Régimen B<span class="seg-sub">Descuento tributario</span></label>
+              </div>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn-calcular">Calcular APV</button>
+        </form>
+
+        <div id="resultado-apv" class="resultado-area" role="region" aria-live="polite"></div>
+
+        <div class="chart-wrapper" id="wrapper-apv" style="display:none">
+          <p class="chart-titulo">Acumulado proyectado año a año</p>
+          <canvas id="chart-apv"></canvas>
+        </div>
+
+        <button class="btn-copiar" data-target="resultado-apv" aria-label="Copiar resultado al portapapeles">
+          📋 Copiar resultado
+        </button>
+        <button class="btn-pdf" data-target="resultado-apv" data-titulo="APV Régimen A o B — CalculadorasChile" style="display:none">
+          🖨️ Descargar PDF
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 6: PENSIÓN ALIMENTARIA
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="pension-alimentos" aria-labelledby="titulo-pension">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">👶</span>
+        <div>
+          <h2 id="titulo-pension">Calculadora Pensión Alimentaria Chile 2026</h2>
+          <p>Mínimos legales y rangos orientadores — Ley 14.908</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+        <form id="form-pension" novalidate>
+          <div class="form-grid">
+
+            <div class="campo full-width">
+              <label for="ingreso-pension">Ingreso neto mensual del obligado ($)</label>
+              <input type="text" id="ingreso-pension" placeholder="Ej: 1.200.000"
+                inputmode="numeric" autocomplete="off" required>
+              <span class="hint-label">Empleado: sueldo líquido. Honorarios: ingreso bruto declarado ante el SII.</span>
+            </div>
+
+            <div class="campo">
+              <label for="hijos-pension">Número de hijos/as</label>
+              <select id="hijos-pension">
+                <option value="1">1 hijo/a</option>
+                <option value="2">2 hijos/as</option>
+                <option value="3">3 hijos/as</option>
+                <option value="4">4 hijos/as</option>
+                <option value="5">5 o más hijos/as</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="tipo-obligado-pension">Tipo de obligado (alimentante)</label>
+              <select id="tipo-obligado-pension">
+                <option value="empleado">Empleado con contrato</option>
+                <option value="honorarios">Honorarios / Independiente</option>
+                <option value="sin_ingreso">Sin ingreso declarado</option>
+              </select>
+            </div>
+
+          </div>
+          <button type="submit" class="btn-calcular">Calcular pensión orientadora</button>
+        </form>
+
+        <div id="resultado-pension" class="resultado-area" role="region" aria-live="polite"></div>
+        <button class="btn-copiar" data-target="resultado-pension" style="display:none">📋 Copiar resultado</button>
+        <button class="btn-pdf" data-target="resultado-pension" data-titulo="Pensión Alimentaria — CalculadorasChile" style="display:none">🖨️ Descargar PDF</button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         CALCULADORA 7: REAJUSTE ARRIENDO IPC
+    ════════════════════════════════════════ -->
+    <section class="calculadora-seccion" id="arriendo-ipc" aria-labelledby="titulo-arriendo">
+      <div class="seccion-header">
+        <span class="seccion-icono" aria-hidden="true">🏘️</span>
+        <div>
+          <h2 id="titulo-arriendo">Calculadora Reajuste de Arriendo por IPC</h2>
+          <p>Actualiza tu arriendo según el Índice de Precios al Consumidor — Ley 18.101</p>
+        </div>
+      </div>
+      <div class="seccion-body">
+        <form id="form-arriendo" novalidate>
+          <div class="form-grid">
+
+            <div class="campo full-width">
+              <label for="arriendo-actual">Arriendo mensual actual ($)</label>
+              <input type="text" id="arriendo-actual" placeholder="Ej: 450.000"
+                inputmode="numeric" autocomplete="off" required>
+            </div>
+
+            <div class="campo full-width">
+              <label for="variacion-ipc">Variación IPC del período (%)</label>
+              <input type="number" id="variacion-ipc" value="3.5" min="-10" max="100" step="0.1">
+              <div class="presets-fila" id="presets-ipc">
+                <button type="button" class="preset-btn" data-valor="2.4">Interanual 2026 (2.4%)</button>
+                <button type="button" class="preset-btn activo" data-valor="3.5">2025 anual (3.5%)</button>
+                <button type="button" class="preset-btn" data-valor="4.5">2024 anual (4.5%)</button>
+                <button type="button" class="preset-btn" data-valor="7.8">2023 anual (7.8%)</button>
+                <button type="button" class="preset-btn" data-valor="12.8">2022 anual (12.8%)</button>
+              </div>
+              <span class="hint-label" id="hint-ipc-actual">Cargando IPC interanual actual…</span>
+            </div>
+
+          </div>
+          <button type="submit" class="btn-calcular">Calcular nuevo arriendo</button>
+        </form>
+
+        <div id="resultado-arriendo" class="resultado-area" role="region" aria-live="polite"></div>
+        <button class="btn-copiar" data-target="resultado-arriendo" style="display:none">📋 Copiar resultado</button>
+        <button class="btn-pdf" data-target="resultado-arriendo" data-titulo="Reajuste Arriendo IPC — CalculadorasChile" style="display:none">🖨️ Descargar PDF</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>
+      Datos del Banco Central de Chile vía
+      <a href="https://mindicador.cl" target="_blank" rel="noopener">mindicador.cl</a>
+      • Actualizado diariamente
+    </p>
+    <p style="margin-top:0.35rem; opacity:0.6; font-size:0.76rem;">
+      Los cálculos son referenciales. Para asesoría legal o financiera, consulta a un profesional.
+    </p>
+  </footer>
+
+  <!-- Área de impresión oculta — se rellena al imprimir/PDF -->
+  <div id="print-area" aria-hidden="true"></div>
+
+  <!-- Chart.js — cargado antes del módulo para que esté disponible como global -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+  <!-- Módulos JS (type="module" para soporte de import/export) -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>

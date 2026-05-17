@@ -1,0 +1,16 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Node (si en algún momento agregas dependencias)
+node_modules/
+npm-debug.log*
